@@ -6,15 +6,32 @@
 //  Copyright © 2020 Chris Thomas. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-class SecondViewController: UIViewController {
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+class HostingController: UIHostingController<MainView> {
+	required init?(coder aDecoder: NSCoder) {
+		
+		
+		super.init(coder: aDecoder, rootView: MainView())
 	}
-
-
 }
 
+struct MainView: View {
+	
+	var body: some View {
+		List {
+			NavigationLink(destination: SecondView()) {
+				Text("Tap me")
+			}
+		}.navigationBarTitle("First Screen")
+	}
+	
+}
+
+struct SecondView: View {
+	
+	var body: some View {
+		Text("Hello World").navigationBarTitle("Second Screen")
+
+	}
+}
